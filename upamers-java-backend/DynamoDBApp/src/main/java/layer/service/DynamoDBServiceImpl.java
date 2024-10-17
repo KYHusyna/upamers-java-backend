@@ -93,7 +93,7 @@ public class DynamoDBServiceImpl implements DynamoDBService {
         User existingUser = dynamoDBMapper.load(User.class, userToUpdate.getEmail());
 
         if (existingUser != null) {
-            dynamoDBMapper.update(existingUser);
+            dynamoDBMapper.save(existingUser);
             return getJsonResponse("User updated: " + existingUser.getEmail());
         } else {
             return getJsonResponse("User not found");
